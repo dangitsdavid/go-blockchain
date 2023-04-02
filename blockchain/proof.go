@@ -14,7 +14,7 @@ import (
 // difficulty here is static, but in a real blockchain,
 // this difficulty should adjust based on total computation
 // and miners to retain the same block production rate
-const Difficulty = 12
+const Difficulty = 18
 
 type ProofOfWork struct {
 	Block  *Block
@@ -56,9 +56,8 @@ func (pow *ProofOfWork) Run() (int, []byte) {
 
 	for nonce < math.MaxInt64 {
 		data := pow.InitData(nonce)
-		hash := sha256.Sum256(data)
+		hash = sha256.Sum256(data)
 
-		// remove after testing
 		// fmt.Printf("\r%x", hash)
 
 		intHash.SetBytes(hash[:])
@@ -69,7 +68,6 @@ func (pow *ProofOfWork) Run() (int, []byte) {
 			nonce++
 		}
 	}
-	// remove after testing
 	// fmt.Println()
 
 	return nonce, hash[:]

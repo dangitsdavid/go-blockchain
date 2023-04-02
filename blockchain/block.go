@@ -1,6 +1,5 @@
 package blockchain
 
-// simple array - tbd
 type BlockChain struct {
 	Blocks []*Block
 }

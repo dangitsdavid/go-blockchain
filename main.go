@@ -19,7 +19,9 @@ func main() {
 		time.Sleep(2 * time.Second)
 
 		// print out block data
+		i := 0
 		for _, block := range chain.Blocks {
+			fmt.Println(i)
 			fmt.Printf("Previous Hash: %x\n", block.PrevHash)
 			fmt.Printf("Data in Block: %s\n", block.Data)
 			fmt.Printf("Hash: %x\n", block.Hash)
@@ -27,6 +29,7 @@ func main() {
 			pow := blockchain.NewProof(block)
 			fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
 			fmt.Println()
+			i++
 		}
 	}
 }
