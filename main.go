@@ -10,6 +10,7 @@ import (
 
 func main() {
 	chain := blockchain.InitBlockChain()
+	i := 0
 
 	for {
 		// Add a new block with the current timestamp as the data
@@ -19,7 +20,6 @@ func main() {
 		time.Sleep(2 * time.Second)
 
 		// print out block data
-		i := 0
 		for _, block := range chain.Blocks {
 			fmt.Println(i)
 			fmt.Printf("Previous Hash: %x\n", block.PrevHash)
